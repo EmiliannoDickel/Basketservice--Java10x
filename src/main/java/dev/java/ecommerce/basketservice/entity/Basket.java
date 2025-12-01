@@ -21,5 +21,5 @@ public class Basket {
     private BigDecimal price;
     private List<Product> products;
     private Status status;
-
+}
 
