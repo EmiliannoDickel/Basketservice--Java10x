@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@Document(collation = "basket")// anotação para dizer que essa classe é um documento do mongoDB
+@Document(collection = "basket")// anotação para dizer que essa classe é um documento do mongoDB
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,8 +18,14 @@ public class Basket {
     @Id
     private String id;
     private Long client;
-    private BigDecimal price;
+    private BigDecimal totalPrice;
     private List<Product> products;
     private Status status;
+
+    public void CalculateTotalPrice (){
+        this.totalPrice = products.stream().map(product -> product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }
+
 
