@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "PlatziStoreClient", url = "${spring.basket.client.platzi}") // URL of the Platzi Store service
+@FeignClient(name = "PlatziStoreClient", url = "${spring.basket.client.platzi}") // URL API externa
 public interface PlatziStoreClient {
 
     @GetMapping("/products")
