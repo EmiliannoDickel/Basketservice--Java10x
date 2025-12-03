@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping()
 @RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping
+    @GetMapping("/products")
     public ResponseEntity<List<PlatziProductResponse>> getAllProducts(){
         return ResponseEntity.ok(productService.getProducts());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/products/{id}")
     public ResponseEntity<PlatziProductResponse> getProductById(@PathVariable Long id){
         return ResponseEntity.ok(productService.getProductId(id));
     }
